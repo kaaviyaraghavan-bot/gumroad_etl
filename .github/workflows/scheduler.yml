@@ -1,0 +1,23 @@
+name: Daily Gumroad ETL
+
+on:
+  schedule:
+    - cron: '30 12 * * *'   # 6 PM IST
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ETL
+        run: python fetch_sales.py
