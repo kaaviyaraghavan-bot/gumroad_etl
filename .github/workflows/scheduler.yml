@@ -8,6 +8,12 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    
+    env:
+      GUMROAD_TOKEN: ${{ secrets.GUMROAD_TOKEN }}
+      AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+      AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+
 
     steps:
       - uses: actions/checkout@v3
