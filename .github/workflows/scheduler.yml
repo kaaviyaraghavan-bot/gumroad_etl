@@ -2,7 +2,7 @@ name: Daily Gumroad ETL
 
 on:
   schedule:
-    - cron: '30 12 * * *'   # 6 PM IST
+    - cron: '30 12 * * *'
   workflow_dispatch:
 
 jobs:

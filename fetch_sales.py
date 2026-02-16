@@ -55,6 +55,7 @@ def get_existing_order_ids(table_name):
 # ==============================
 
 def fetch_sales():
+    print("Token exists:", GUMROAD_TOKEN is not None)
     response = requests.get(
         GUMROAD_URL,
         params={
@@ -62,14 +63,21 @@ def fetch_sales():
             "per_page": 100  # Fetch more per run
         }
     )
+    print("Status Code:", response.status_code)
+    print("Raw Response:", response.text)
 
-    data = response.json()
-
-    if not data.get("success"):
-        print("❌ Gumroad API failed:", data)
+    if response.status_code != 200:
         return []
 
-    return data.get("sales", [])
+    return response.json().get("sales", [])
+
+   # data = response.json()
+
+    #if not data.get("success"):
+     #   print("❌ Gumroad API failed:", data)
+      #  return []
+
+    #return data.get("sales", [])
 
 
 # ==============================
