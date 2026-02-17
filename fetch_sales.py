@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 
 # ==============================
 # CONFIG
@@ -71,6 +71,8 @@ def fetch_sales():
 
     return response.json().get("sales", [])
 
+
+
    # data = response.json()
 
     #if not data.get("success"):
@@ -98,7 +100,7 @@ def insert_record(table_name, payload):
 
 def run_pipeline():
 
-    print("🚀 Scheduled ETL Started at:", datetime.utcnow())
+    print("🚀 Scheduled ETL Started at:", datetime.now(timezone.utc))
 
     sales = fetch_sales()
 
@@ -162,12 +164,12 @@ def run_pipeline():
         clean_payload = {
             "fields": {
                 "Order ID": order_id,
-                "Email": sale.get("email") or "unknown@email.com",
-                "Product Name": sale.get("product_name") or "Unknown Product",
+                "Email": sale.get("email") or "NA",
+                "Product Name": sale.get("product_name") or "NA",
                 "Price": sale.get("price") or 0,
-                "Currency": sale.get("currency_symbol") or "Unknown",
-                "Country": sale.get("country") or "Unknown",
-                "State": sale.get("state") or "Unknown",
+                "Currency": sale.get("currency_symbol") or "NA",
+                "Country": sale.get("country") or "NA",
+                "State": sale.get("state") or "NA",
                 "Purchase Date": created_at
             }
         }
@@ -181,7 +183,7 @@ def run_pipeline():
     print("Raw Inserted:", inserted_raw)
     print("Clean Inserted:", inserted_clean)
     print("Skipped:", skipped)
-    print("Completed at:", datetime.utcnow())
+    print("Completed at:", datetime.now(timezone.utc))
 
 
 # ==============================
