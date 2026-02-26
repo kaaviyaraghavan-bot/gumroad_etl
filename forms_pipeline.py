@@ -57,7 +57,7 @@ def find_record_by_email(table_name, email):
 
 
     print("Searching in table:", table_name)
-    print("Filter formula:", f"{{Email id}}='{email}'")
+    print("Filter formula:", f"LOWER({{Email}})='{email}'")
     
 
 
@@ -104,6 +104,7 @@ def main():
 
     for index, row in enumerate(rows):
        
+       
 
         if str(row.get("Processed", "")).lower() == "yes":
             continue
@@ -111,8 +112,8 @@ def main():
         # Extract & lowercase everything
         name = str(row.get("NAME:", "")).strip().lower()
         email = str(row.get("EMAIL ID:", "")).strip().lower()
-        profession = str(row.get("PROFESSION:", "")).strip().lower()
-        phone = str(row.get("PHONE NUMBER:", "")).strip().lower()
+        profession = str(row.get("PROFESSION :", "")).strip().lower()
+        phone = str(row.get("PHONE NUMBER: ", "")).strip()
 
         print("Form email:", email)
         print("Profession:", profession)
