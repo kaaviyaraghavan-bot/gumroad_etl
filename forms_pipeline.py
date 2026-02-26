@@ -115,6 +115,8 @@ def main():
         phone = str(row.get("PHONE NUMBER:", "")).strip().lower()
 
         print("Form email:", email)
+        print("Profession:", profession)
+        print("Phone:", phone)
 
         if not email:
             continue
