@@ -128,7 +128,7 @@ def main():
         if raw_record_id:
             raw_fields = {
                 "Name": name,
-                "Email id": email,
+                "Email": email,
                 "Profession": profession,
                 "Phone No": phone,
                 "Form Submitted": True
@@ -149,7 +149,7 @@ def main():
         if clean_record_id:
             clean_fields = {
                 "Name": name,
-                "Email id": email,
+                "Email": email,
                 "Profession": profession,
                 "Phone No": phone,
                 "Form Submitted": True,
