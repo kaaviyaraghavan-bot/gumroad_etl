@@ -131,7 +131,7 @@ def main():
                 "Email": email,
                 "Profession": profession,
                 "Phone No": phone,
-                "Form Submitted": True
+            
             }
 
             update_record(RAW_TABLE, raw_record_id, raw_fields)
@@ -152,8 +152,7 @@ def main():
                 "Email": email,
                 "Profession": profession,
                 "Phone No": phone,
-                "Form Submitted": True,
-                "Form Updated At": datetime.now(timezone.utc).isoformat()
+            
             }
 
             update_record(CLEAN_TABLE, clean_record_id, clean_fields)
